@@ -1,19 +1,19 @@
-version: '3.8'
+version: "3.8"
 services:
   frontend:
-    build: ./frontend
+    image: sachin529/multi-tier-frontend:latest
     ports:
       - "8080:80"
+
   backend:
-    build: ./backend
+    image: sachin529/multi-tier-backend:latest
     ports:
       - "3000:3000"
     depends_on:
       - mongo
+
   mongo:
     image: mongo:latest
-    volumes:
-      - mongo-data:/data/db
-volumes:
-  mongo-data:
+    ports:
+      - "27017:27017"
 
